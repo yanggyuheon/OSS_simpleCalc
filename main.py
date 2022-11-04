@@ -53,13 +53,25 @@ while True:
             # input값 lower()로 소문자처리
             next_calculation = input("Let's do next calculation? (yes/no): ").lower()
             if next_calculation == "no":
-                loop_break = True
-                break
+                
+                # loop break 이중 확인
+                while True:
+                    loop_out_check = input("Are you sure? (yes/no): ").lower()
+
+                    if loop_out_check == "yes":
+                        loop_break = True
+                        break
+
+                    elif loop_out_check == "no":
+                        break
+
+                    else: # yes/no 이외의 값
+                        print("Invalid Input. Please enter (yes/no)")
 
             elif next_calculation == "yes":
                 break
 
-            else:
+            else: # yes/no 이외의 값
                 print("Invalid Input. Please enter (yes/no)")
 
         # Let's do next calculation 입력값 no인 경우
