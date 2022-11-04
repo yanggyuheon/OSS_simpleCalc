@@ -1,6 +1,10 @@
 # Program make a simple calculator
 
-import operator
+import op
+import log
+
+normal_logger = log.make_logger('normal') # normal_logger 생성
+error_logger = log.make_logger('error') # error_logger 생성
 
 print("Select operation.")
 print("1.Add")
@@ -19,19 +23,25 @@ while True:
         num2 = float(input("Enter second number: "))
 
         if choice == '1':
-            print(num1, "+", num2, "=", operator.add(num1, num2))
+            print(num1, "+", num2, "=", op.add(num1, num2))
+            normal_logger.info(f"{num1} + {num2} = {op.add(num1, num2)}")
 
         elif choice == '2':
-            print(num1, "-", num2, "=", operator.subtract(num1, num2))
+            print(num1, "-", num2, "=", op.subtract(num1, num2))
+            normal_logger.info(f"{num1} - {num2} = {op.subtract(num1, num2)}")
 
         elif choice == '3':
-            print(num1, "*", num2, "=", operator.multiply(num1, num2))
+            print(num1, "*", num2, "=", op.multiply(num1, num2))
+            normal_logger.info(f"{num1} * {num2} = {op.multiply(num1, num2)}")
 
         else:
             if num2 == 0:
                 print("Divison by zero isn't possible")
+                error_logger.info("Division by zero isn't possible")
+
             else:
-                print(num1, "/", num2, "=", operator.divide(num1, num2))
+                print(num1, "/", num2, "=", op.divide(num1, num2))
+                normal_logger.info(f"{num1} / {num2} = {op.divide(num1, num2)}")
 
         loop_break = False # loop_break_1번째 체크
         loop_break2 = False # loop_break_2번째 체크
@@ -72,6 +82,7 @@ while True:
             break
 
     else:
-        print("Invalid Input")
+        print("Invalid Input. Please enter (1/2/3/4)")
+        error_logger.info("Invalid Input. Please enter (1/2/3/4)")
 
 
