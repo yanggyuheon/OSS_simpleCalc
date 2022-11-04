@@ -20,7 +20,7 @@ while True:
     # check if choice is one of the four options
     if choice in ('1', '2', '3', '4'):
         
-        # 숫자 입력받을 때 문자열 들어오는 것 예외 처리
+        # 입력받을 때 숫자 이외의 값이 들어오면 예외 처리
         while True:
             try:
                 num1 = float(input("Enter first number: "))
