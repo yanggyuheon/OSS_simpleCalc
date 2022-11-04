@@ -19,8 +19,17 @@ while True:
 
     # check if choice is one of the four options
     if choice in ('1', '2', '3', '4'):
-        num1 = float(input("Enter first number: "))
-        num2 = float(input("Enter second number: "))
+        
+        # 숫자 입력받을 때 문자열 들어오는 것 예외 처리
+        while True:
+            try:
+                num1 = float(input("Enter first number: "))
+                num2 = float(input("Enter second number: "))
+                break
+            except: # 예외 발생할 경우 실행
+                print("Invalid Input. Please enter a number")
+                error_logger.info("Invalid Input. Please enter a number")
+            
 
         if choice == '1':
             print(num1, "+", num2, "=", op.add(num1, num2))
