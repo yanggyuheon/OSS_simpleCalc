@@ -47,7 +47,8 @@ while True:
             else:
                 print(num1, "/", num2, "=", divide(num1, num2))
 
-        loop_break = False
+        loop_break = False # loop_break_1번째 체크
+        loop_break2 = False # loop_break_2번째 체크
 
         while True:
             # input값 lower()로 소문자처리
@@ -57,12 +58,14 @@ while True:
                 # loop break 이중 확인
                 while True:
                     loop_out_check = input("Are you sure? (yes/no): ").lower()
-
+                    
                     if loop_out_check == "yes":
+                        loop_break2 = True
                         loop_break = True
                         break
 
                     elif loop_out_check == "no":
+                        loop_break2 = True
                         break
 
                     else: # yes/no 이외의 값
@@ -73,6 +76,10 @@ while True:
 
             else: # yes/no 이외의 값
                 print("Invalid Input. Please enter (yes/no)")
+            
+            # break Are you sure? 입력값 yes/no인 경우 
+            if loop_break2 == True: 
+                break
 
         # Let's do next calculation 입력값 no인 경우
         if loop_break == True:
