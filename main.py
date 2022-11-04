@@ -47,11 +47,26 @@ while True:
             else:
                 print(num1, "/", num2, "=", divide(num1, num2))
 
-        # break the while loop if answer is no
-        next_calculation = input("Let's do next calculation? (yes/no): ")
-        if next_calculation == "no":
+        loop_break = False
+
+        while True:
+            # input값 lower()로 소문자처리
+            next_calculation = input("Let's do next calculation? (yes/no): ").lower()
+            if next_calculation == "no":
+                loop_break = True
+                break
+
+            elif next_calculation == "yes":
+                break
+
+            else:
+                print("Invalid Input. Please enter (yes/no)")
+
+        # Let's do next calculation 입력값 no인 경우
+        if loop_break == True:
             break
 
     else:
         print("Invalid Input")
+
 
